@@ -109,6 +109,20 @@ public:
 		/* a2 */ coef[4] = (1.0 - alpha) * scale;
 		setCoefficients(stage, coef);
 	}
+	void setAllPass(uint32_t stage, float frequency, float q = 1.0) {
+		int coef[5];
+		double w0 = frequency * (2 * 3.141592654 / AUDIO_SAMPLE_RATE_EXACT);
+		double sinW0 = sin(w0);
+		double alpha = sinW0 / ((double)q * 2.0);
+		double cosW0 = cos(w0);
+		double scale = 1073741824.0 / (1.0 + alpha);
+		/* b0 */ coef[0] = (1.0 - alpha) * scale;
+		/* b1 */ coef[1] = (-2.0 * cosW0) * scale;
+		/* b2 */ coef[2] = (1.0 + alpha) * scale;
+		/* a1 */ coef[3] = (-2.0 * cosW0) * scale;
+		/* a2 */ coef[4] = (1.0 - alpha) * scale;
+		setCoefficients(stage, coef);
+	}
 	void setLowShelf(uint32_t stage, float frequency, float gain, float slope = 1.0f) {
 		int coef[5];
 		double a = pow(10.0, gain/40.0);
