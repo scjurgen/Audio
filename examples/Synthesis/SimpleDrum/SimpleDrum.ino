@@ -1,9 +1,3 @@
-#include <Audio.h>
-#include <Wire.h>
-#include <SPI.h>
-#include <SD.h>
-#include <SerialFlash.h>
-
 #include <synth_simple_drum.h>
 
 #include <Audio.h>
@@ -74,7 +68,7 @@ void loop() {
 
   static uint32_t num = 0;
 
-  if(millis() == next)
+  if(millis() >= next)
   {
     next = millis() + 1000;
 
