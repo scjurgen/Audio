@@ -173,7 +173,6 @@ public:
 		/* b0 */ coef[0] = (1.0 + a*alpha) * scale;
 		/* b1 */ coef[1] = (-2.0 * cosW0) * scale;
 		/* b2 */ coef[2] = (1.0 - a*alpha) * scale;
-
 		/* a1 */ coef[3] = (-2.0 * cosW0) * scale;
 		/* a2 */ coef[4] = (1.0 - alpha/a) * scale;
 		setCoefficients(stage, coef);
